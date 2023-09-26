@@ -1,0 +1,75 @@
+env:
+  browser: true
+  es2020: true
+  es6: true
+  node: true
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:react/recommended
+  - plugin:react-hooks/recommended
+  - plugin:jest/recommended
+  - plugin:prettier/recommended
+plugins:
+  - "@jambit/typed-redux-saga"
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 2020
+  sourceType: module
+rules:
+  "prettier/prettier": "warn"
+  "@typescript-eslint/explicit-module-boundary-types": off
+  "react/react-in-jsx-scope": off
+  "@typescript-eslint/no-unused-vars":
+    - "warn"
+    - 
+      argsIgnorePattern: '^_'
+      varsIgnorePattern: '^_'
+  "@typescript-eslint/no-restricted-imports":
+    - "warn"
+    -
+      patterns:
+        - 
+          group:
+            - "@mui/system"
+            - "@mui/system/*"
+            - "@emotion/react"
+            - "@emotion/react/*"
+            - "@emotion/styled"
+            - "@emotion/styled/*"
+          message: "Please use '@mui/material' instead."
+          allowTypeImports: true
+        -
+          group:
+            - "lodash"
+          message: "Please use 'lodash.*' instead."
+        -
+          group:
+            - "@mdi/react"
+          importNames:
+            - "default"
+          message: 'Do not use default import from "@mdi/react" for production build.'
+        
+ignorePatterns:
+  - "**/*.js"
+  - "**/node_modules/"
+  - "**/dist/"
+overrides:
+  -
+    files:
+      - "*.ts"
+    excludedFiles:
+      - "./**/*.spec.ts"
+    rules:
+      "@jambit/typed-redux-saga/use-typed-effects": "error"
+      "@jambit/typed-redux-saga/delegate-effects": "error"
+  - 
+    files:
+      - "*.tsx"
+    rules:
+      "react/prop-types": "off"
+settings:
+  react:
+    version: detect

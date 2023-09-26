@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@utils/*": ["src/utils/*"],
+      "@redux/*": ["src/redux/*"],
+      "@router": ["src/router/index"],
+      "@strings": ["src/assets/strings/index"],
+      "@images": ["src/assets/images/index"],
+      "@styles/*": ["src/assets/styles/*"],
+      "@routes": ["src/assets/routes/index"],
+      "@markdown": ["src/assets/markdown/index"],
+      "@envs": ["src/envs/index"],
+      "@components/*": ["src/components/*"],
+      "@/*" : ["src/*"],
+    },
+  }
+}
