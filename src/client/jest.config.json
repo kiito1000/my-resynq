@@ -1,0 +1,41 @@
+{
+  "transform": {
+    "^.+\\.(t|j)sx?$": [
+      "@swc/jest",
+      {
+        "sourceMaps": "inline", // cf. https://github.com/swc-project/jest/issues/61
+        "module": {
+          "type": "commonjs"
+        },
+        "jsc": {
+          "parser": {
+            "syntax": "typescript",
+            "tsx": true
+          },
+          "transform": {
+            "react": {
+              "runtime": "automatic"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "testEnvironment": "jest-environment-jsdom",
+  "testPathIgnorePatterns": [
+    "<rootDir>/node_modules/",
+    "<rootDir>/dist"
+  ],
+  "transformIgnorePatterns": ["node_modules"],
+  "moduleNameMapper": {
+    "^@utils/(.*)$": ["<rootDir>/src/utils/$1"],
+    "^@redux/(.*)$": ["<rootDir>/src/redux/$1"],
+    "^@strings$": ["<rootDir>/src/assets/strings/index"],
+    "^@images$": ["<rootDir>src/assets/images/index"],
+    "^@styles/(.*)$": ["<rootDir>/src/assets/styles/$1"],
+    "^@routes$": ["<rootDir>/src/assets/routes/index"],
+    "^@envs$": ["<rootDir>/src/envs/index"],
+    "^@components/(.*)$": ["<rootDir>/src/components/$1"],
+    "^@/(.*)$": ["<rootDir>/src/$1"]
+  }
+}
